@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View,Pressable, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, View, Pressable, Image, Dimensions, Platform } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link ,router} from 'expo-router';
+import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const semesters = () => {
+const { width, height } = Dimensions.get('window');  // Get screen width and height
+
+const Semesters = () => {
   const url = 'https://db.al-marwaziuniversity.so/api/report';
 
   const [balance, setBalance] = useState([]);
@@ -19,66 +20,58 @@ const semesters = () => {
       if (jsonValue != null) {
         const userData = JSON.parse(jsonValue);
         
-        // Values for first API request
         const values1 = {
           sp: 540,
           std_id: userData.result.auto_id
         };
-  
-        // Values for second API request
+
         const values2 = {
-          sp: 585, // Example value for second request
+          sp: 585,
           std_id: userData.result.auto_id
         };
   
-        // First API request
         const response1 = await axios.post(url, values1);
         const result1 = response1.data.result[0];
         setBalance(result1);
   
-        // Second API request
         const response2 = await axios.post(url, values2);
         const result2 = response2.data.result[0];
-        setSecondData(result2);  // Store the second response
-        console.log('fee::',response2.data.result)
-
+        setSecondData(result2); 
+        console.log('fee::',response2.data.result);
       }
     } catch (err) {
       setError(err.message);
-    } finally {
-      // setLoading(false); // Uncomment if using a loading state
     }
   };
+
   useEffect(() => {
     fetchBalance();
   }, []);
   
-
   return (
     <View style={styles.container}>
       <View style={styles.feature1} >
-          <Image  source={require('../../assets/exam.jpg')}  style={styles.image}/>
-          <Text style={styles.title}>Examination Results</Text>
+        <Image source={require('../../assets/exam.jpg')} style={styles.image} />
+        <Text style={styles.title}>Examination Results</Text>
         <Text style={styles.subtitle}>Al-Marwazi University Portal</Text>
-        </View>
-     
-        <Pressable style={styles.feature} onPress={() => router.push('/examination/transcript')}>
-        <Icon name="dots-grid" size={30} color="#FF9800"  />
+      </View>
+
+      <Pressable style={styles.feature} onPress={() => router.push('/examination/transcript')}>
+        <Icon name="dots-grid" size={30} color="#FF9800" />
         <Text style={styles.featureText}>Show as Transcript</Text>
-          <Icon name="arrow-right" size={25} color="black" style={styles.icon}/>
+        <Icon name="arrow-right" size={25} color="black" style={styles.icon} />
+      </Pressable>
 
-        </Pressable>
-        <Pressable style={styles.feature} onPress={() => router.push('/examination/semesterwise')}>
-          <Icon name="calendar-blank" size={30} color="#9C27B0"  />
-          <Text style={styles.featureText}>Show as Semester Wise</Text>
-          <Icon name="arrow-right" size={25} color="black" style={styles.icon1}/>
-
-        </Pressable>
+      <Pressable style={styles.feature} onPress={() => router.push('/examination/semesterwise')}>
+        <Icon name="calendar-blank" size={30} color="#9C27B0" />
+        <Text style={styles.featureText}>Show as Semester Wise</Text>
+        <Icon name="arrow-right" size={25} color="black" style={styles.icon1} />
+      </Pressable>
     </View>
-  )
-}
+  );
+};
 
-export default semesters
+export default Semesters;
 
 const styles = StyleSheet.create({
   container: {
@@ -86,65 +79,50 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#236b17',
   },
-  
-  featuresContainer: {
-    marginTop: 20,
-  },
   image: {
-    width: '100%',    // Make sure the image takes the full width of the container
-    height: '100%',   // Make sure the image takes the full height of the container
-    position: 'absolute',  // Positions the image behind the view
+    width: '100%',   
+    height: '100%',   
+    position: 'absolute',  
     top: 0,
     left: 0,
-    borderRadius: 25,  // Optional: apply border radius to match the view
+    borderRadius: 25, 
   },
   feature1: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent white
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
     borderRadius: 25,
-    width: 370,   // Adjust size of the View
-    height: 200,  // Adjust size of the View
-    justifyContent: 'center',  // Center any content vertically
-    alignItems: 'center',      // Center any content horizontally
-    marginBottom: 20
+    width: width * 0.9,   // Responsive width (90% of the screen width)
+    height: height * 0.25, // Responsive height (25% of the screen height)
+    justifyContent: 'center', 
+    alignItems: 'center',     
+    marginBottom: 20,
   },
   feature: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#FFF',
-    padding: 15,
+    padding: Platform.OS === 'ios' ? 20 : 15,  // Different padding for iOS and Android
     marginVertical: 10,
     borderRadius: 10,
     elevation: 2,
   },
   title: {
-    fontSize: 24,
+    fontSize: width * 0.06,  // Responsive font size
     fontWeight: 'bold',
     color: '#FFFF00',
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: width * 0.04,  // Responsive font size
     color: '#FFFF00',
   },
   featureText: {
-    fontSize: 18,
+    fontSize: width * 0.045,  // Responsive font size
     marginLeft: 40,
     color: '#333',
   },
-  resultText: {
-    fontSize: 18,
-    marginLeft: 152,
-    color: 'blue',
+  icon: {
+    marginLeft: 'auto',   // Align to right dynamically
   },
-  resultText1: {
-    fontSize: 18,
-    marginLeft: 180,
-    color: 'red',
-    
-  },
-  icon:{
-    marginLeft: 93
-  },
-  icon1:{
-    marginLeft: 50
+  icon1: {
+    marginLeft: 'auto',   // Align to right dynamically
   }
- })
+});

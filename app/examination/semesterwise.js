@@ -128,17 +128,20 @@ const ReportCard = () => {
         </Modal>
       </View>
 
-      {/* Marks Section */}
       {Array.isArray(subjects) && subjects.length > 0 ? (
   subjects.map((subject, index) => (
-    <View key={index} style={styles.subjectContainer}>
-      {/* Make sure the course title is inside a Text component */}
+    <View 
+      key={index} 
+      style={[
+        styles.subjectContainer, 
+        index === subjects.length - 1 ? styles.lastSubjectContainer : {}
+      ]} // Apply extra margin to all but the last item
+    >
       <Text style={styles.courseTitle}>{subject?.course || 'Unknown Subject'}</Text>
 
       <View style={styles.marksContainer}>
         <View style={styles.row}>
           <Text style={styles.label}>درجة الحضور1</Text>
-          {/* Wrap value inside a Text component */}
           <TextInput 
             style={styles.input} 
             value={(subject?.attendance1 || 0).toString()} 
@@ -205,6 +208,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     backgroundColor: '#f5f5f5',
+    
   },
   infoSection: {
     backgroundColor: '#fff',
@@ -245,7 +249,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 5,
-    width: 370,
+    width: '100%',   
     height: 50,
   },
   dropdownButtonText: {
@@ -261,7 +265,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalContainer: {
-    width: 300,
+    width: '100%',   
     backgroundColor: '#fff',
     borderRadius: 8,
     padding: 20,
@@ -297,24 +301,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: 24
   },
-  subjectContainer: {   // Subject container as a header for the subject
+  subjectContainer: {
     backgroundColor: '#FF9800',
     padding: 12,
     borderRadius: 28,
-    marginBottom: 8,
-    alignItems: 'center',   // Center the text
-    width:380,
-    height:390
+    marginBottom: 63, // Space between subject containers
+    alignItems: 'center',
+    width: '100%',
+    height: '11%'
 
+  },
+  lastSubjectContainer: {
+    marginBottom: 0, // Remove margin for the last subject container
   },
   marksContainer: {
     backgroundColor: '#236b17',
     padding: 16,
-    marginBottom: 16,
     elevation: 2,
-    width:380,
     borderBottomRightRadius: 28,
-    borderBottomLeftRadius: 28
+    borderBottomLeftRadius: 28,
+    width: '107%', // Ensure it fits within the container
+
   },
   row: {
     flexDirection: 'row',

@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 5,
-    width: 370,
+    width: '100%',
     height: 50,
   },
   dropdownButtonText: {
