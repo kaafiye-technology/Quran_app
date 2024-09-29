@@ -16,7 +16,7 @@ import axios from 'axios';
   //   ['فقه العبادات4', '67', 'passed'],
   // ];
   const App = () => {
-    const tableHead = ['Maalinta', 'Xiisada', 'Maadada'];
+    const tableHead = ['Day', 'Period', 'Course'];
     // const tableData = [
     //   {course:'الفرائض2', total:'59.5', status:'passed'},
     //   {course:'قاعة بحث', total:'72', status:'passed'},
@@ -35,11 +35,9 @@ import axios from 'axios';
     if (jsonValue != null) {
         const userData = JSON.parse(jsonValue);
         const values = {
-            sp: 546,
-            course_id: userData.result.course_id,
-            semester_id: semester_id,
-            student_id: userData.result.auto_id    
-
+            sp: 545,
+            class_id: userData.result.class_id,
+            semester_id: semester_id
         }
 
         const response = await axios.post(url,values);
@@ -64,7 +62,7 @@ useEffect(()=>{
 },[])
 
 
-  const tableRows = marks.map(item => [item.date, item.period, item.course]);
+  const tableRows = marks.map(item => [item.day, item.period, item.course]);
 // Step 1: Extract the 'total' values
 const totalValues = marks.map(item => parseFloat(item.total));
 
@@ -78,7 +76,7 @@ console.log('Sum of totals:', sum);
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
         <Card containerStyle={styles.card}>
-          <Text h3 style={styles.title}>Courses Attendace</Text>
+          <Text h3 style={styles.title}>Timetable</Text>
           <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
             <Row data={tableHead} style={styles.head} textStyle={styles.headText} />
             <Rows data={tableRows} textStyle={styles.text} />
@@ -115,7 +113,7 @@ const styles = StyleSheet.create({
   },
   head: {
     height: 40,
-    backgroundColor: '#FF9800',
+    backgroundColor: '#d2981a',
   },
   headText: {
     margin: 6,

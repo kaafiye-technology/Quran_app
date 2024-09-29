@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SemesterItem = ({ semester }) => {
     return (
-      <TouchableOpacity onPress={() => router.push('attendance/courseAttendace?semester_id='+semester.id)}>
+      <TouchableOpacity onPress={() => router.push('timetable/timetable?semester_id='+semester.id)}>
 
       <View style={styles.itemContainer}>
         <View style={styles.iconContainer}>
@@ -76,8 +76,8 @@ console.log('semester:', semesters)
 
   return (
     <View style={styles.container}>
-        <Text style={styles.semes}>Semesters</Text>
-        <FlatList
+        <Text>Semesters</Text>
+      <FlatList
         data={semesters}
         keyExtractor={(item) => item.id.toString()} // Assuming each semester has an `id` field
         renderItem={({ item }) => <SemesterItem semester={item} />} // Assuming the semester number is in `item.number`
@@ -98,10 +98,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  semes:{
-    color:'white',
-    fontSize: 20
-  },
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -119,7 +115,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#FF9800',
+    backgroundColor: '#d2981a',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 15,

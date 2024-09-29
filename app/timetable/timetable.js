@@ -16,7 +16,7 @@ import axios from 'axios';
   //   ['فقه العبادات4', '67', 'passed'],
   // ];
   const App = () => {
-    const tableHead = ['Day', 'Period', 'Course'];
+    const tableHead = ['Maalinta', 'Xiisada', 'Maadada'];
     // const tableData = [
     //   {course:'الفرائض2', total:'59.5', status:'passed'},
     //   {course:'قاعة بحث', total:'72', status:'passed'},
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#214923',
+    backgroundColor: '#236b17',
   },
   card: {
     width: '100%',
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   head: {
     height: 40,
-    backgroundColor: '#3bcd6b',
+    backgroundColor: '#FF9800',
   },
   headText: {
     margin: 6,

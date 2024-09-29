@@ -14,16 +14,22 @@ const AppLayout = () => {
 
 
        <Stack.Screen name="finance/balance" options={{headerTitle: "Balance"}} />
+       <Stack.Screen name="finance/report" options={{headerTitle: "Finance"}} />
 
+       <Stack.Screen name="examination/transcript" options={{headerTitle: "الدرجات"}} />
 
-       <Stack.Screen name="examination/semesters" options={{headerTitle: "Semesters"}} />
+       <Stack.Screen name="examination/semesters" options={{headerTitle: "نتائج الامتحانات"}} />
        <Stack.Screen name="examination/marks" options={{headerTitle: "Marks"}} />
        <Stack.Screen name="finance/statement" options={{headerTitle: "Statement"}} />
        <Stack.Screen name="timetable/semesters" options={{headerTitle: "Semesters"}} />
        <Stack.Screen name="attendance/semesters" options={{headerTitle: "Semesters"}} />
        <Stack.Screen name="timetable/timetable" options={{headerTitle: "Timetable"}} />
        <Stack.Screen name="attendance/courseAttendace" options={{headerTitle: "Attendace"}} />
-
+       <Stack.Screen name="evaluation/semesters" options={{headerTitle: "Semesters"}} />
+       <Stack.Screen name="finance/semesters" options={{headerTitle: "Finance"}} />
+       <Stack.Screen name="evaluation/evaluation" options={{headerTitle: "Evaluation"}} />
+       <Stack.Screen name="attendance/attendence" options={{headerTitle: "Attendance"}} />
+       <Stack.Screen name="examination/semesterwise" options={{headerTitle: "Examination"}} />
        <Stack.Screen name="login" options={{headerTitle: "aa", headerBackVisible: false, headerShown: false}} />
        <Stack.Screen name="welcome" options={{headerTitle: "aa", headerBackVisible: false, headerShown: false}} />
 

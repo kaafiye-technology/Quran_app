@@ -72,9 +72,9 @@ if( update== 'Not Updated' ){
           <Text style={styles.featureText}>Exam Results</Text>
         </Pressable>
 
-        <Pressable style={styles.feature}  onPress={() => router.push('/finance/statement')}>
-          <Icon name="wallet-outline" size={30} color="#FF9800" />
-          <Text style={styles.featureText}>Balance Statement</Text>
+        <Pressable style={styles.feature}  onPress={() => router.push('/finance/semesters')}>
+          <Icon name="cash" size={30} color="#FF9800" />
+          <Text style={styles.featureText}>Finance</Text>
         </Pressable>
 
         <Pressable style={styles.feature}  onPress={() => router.push('/timetable/semesters')}>
@@ -82,9 +82,17 @@ if( update== 'Not Updated' ){
           <Text style={styles.featureText}>Timetable</Text>
         </Pressable>
 
-        <Pressable style={styles.feature} onPress={() => router.push('/attendance/semesters')}>
+        <Pressable style={styles.feature} onPress={() => router.push('/attendance/attendence')}>
           <Icon name="check-circle-outline" size={30} color="#9C27B0"  />
           <Text style={styles.featureText}>Attendance</Text>
+        </Pressable>
+        <Pressable style={styles.feature} onPress={() => router.push('/evaluation/evaluation')}>
+          <Icon name="chart-bar" size={30} color="#FF9800"  />
+          <Text style={styles.featureText}>Evaluation</Text>
+        </Pressable>
+        <Pressable style={styles.feature} onPress={() => router.push('/users/profile')}>
+          <Icon name="account" size={30} color="#9C27B0"  />
+          <Text style={styles.featureText}>Profile</Text>
         </Pressable>
       </View>
     </View>
@@ -95,7 +103,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#214923',
+    backgroundColor: '#236b17',
   },
   logoContainer: {
     alignItems: 'center',

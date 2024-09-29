@@ -63,7 +63,7 @@ export default function Login(){
 
     console.log('values:', values, 'data:', data);
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#214923'}}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#236b17'}}>
         <View style={styles.container}>
     
         <View style={styles.header}>

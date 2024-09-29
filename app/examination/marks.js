@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#214923',
+    backgroundColor: '#236b17',
   },
   card: {
     width: '100%',
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   head: {
     height: 40,
-    backgroundColor: '#3bcd6b',
+    backgroundColor: '#FF9800',
   },
   headText: {
     margin: 6,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 40,
-    backgroundColor: '#3bcd6b',
+    backgroundColor: '#FF9800',
   },
   footerText: {
     margin: 6,

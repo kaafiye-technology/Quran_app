@@ -76,8 +76,8 @@ console.log('semester:', semesters)
 
   return (
     <View style={styles.container}>
-        <Text>Semesters</Text>
-      <FlatList
+        <Text style={styles.semes}>Semesters</Text>
+        <FlatList
         data={semesters}
         keyExtractor={(item) => item.id.toString()} // Assuming each semester has an `id` field
         renderItem={({ item }) => <SemesterItem semester={item} />} // Assuming the semester number is in `item.number`
@@ -90,13 +90,17 @@ console.log('semester:', semesters)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#214923',
+    backgroundColor: '#236b17',
     padding: 20,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  semes:{
+    color:'white',
+    fontSize: 20
   },
   itemContainer: {
     flexDirection: 'row',
@@ -115,7 +119,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#007BFF',
+    backgroundColor: '#FF9800',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 15,
