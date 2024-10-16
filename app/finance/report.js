@@ -7,11 +7,12 @@ import axios from 'axios';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const StatementScreen = () => {
-  const [selectedItem, setSelectedItem] = useState({ name: 'All Dates', value: '1' });
+  const [selectedItem, setSelectedItem] = useState({ name: 'جميع التاريخ', value: '1' });
   const [isDropdownVisible, setDropdownVisible] = useState(false); // Modal visibility state
   const [fromDate, setFromDate] = useState(new Date('2000-01-01')); // Default start date
   const [toDate, setToDate] = useState(new Date());
-  const isDatePickerDisabled = selectedItem.value === '1'; // Disable if 'All Dates' is selected
+  const [showFromDatePicker, setShowFromDatePicker] = useState(false); // Controls visibility of fromDate picker
+  const [showToDatePicker, setShowToDatePicker] = useState(false); // Controls visibility of toDate picker
   const [isGenerated, setIsGenerated] = useState(false);
   const [marks, setMarks] = useState([]);
 
@@ -41,8 +42,6 @@ const StatementScreen = () => {
         const result = response.data.result;
         setMarks(result);
         console.log('Results:', response.data.result);
-        console.log('From Date:', formatDate(fromDate)); // Log formatted fromDate
-        console.log('To Date:', formatDate(toDate)); // Log formatted toDate
       }
     } catch (err) {
       console.log('Error:', err);
@@ -56,8 +55,8 @@ const StatementScreen = () => {
   }, [isGenerated]);
 
   const options = [
-    { name: 'All Dates', value: '1' },
-    { name: 'Custom', value: '2' }
+    { name: 'جميع التاريخ', value: '1' },
+    { name: 'مخصص', value: '2' }
   ];
 
   const handleSelect = (item) => {
@@ -65,30 +64,28 @@ const StatementScreen = () => {
     setDropdownVisible(false); // Close the modal when an item is selected
   };
 
-  const tableHead = ['Date', 'Fee', 'Charge', 'Receipt', 'Balance'];
-  const tableRows = marks.map(item => [item.date, item.Description, item.DR, item.CR, item.Balance]);
+  const tableHead = ['الباقي', 'الإيصال', 'رفع الرسوم', 'الرسوم', 'التاريخ'];
+  const tableRows = marks.map(item => [item.Balance, item.CR, item.DR, item.Description, item.date]);
 
   return (
     <ScrollView style={styles.container1}>
-      {/* Top Image with title */}
       <ImageBackground
         source={require('../../assets/finance.jpg')} // Your image file here
         style={styles.headerImage}
       >
-        <Text style={styles.title}>Statement</Text>
+        <Text style={styles.title}>هنا تفاصيل الرسوم</Text>
         <Text style={styles.subtitle}>Review your statement here</Text>
       </ImageBackground>
 
       {/* Custom Dropdown */}
       <View style={styles.dropdownContainer}>
-        <Text style={styles.modalTitle}>Choose Date Range</Text>
-
+        <Text style={styles.modalTitle}>اختر التاريخ</Text>
         <TouchableOpacity
           style={styles.dropdownButton}
           onPress={() => setDropdownVisible(true)}
         >
           <Text style={styles.dropdownButtonText}>{selectedItem.name}</Text>
-          <Icon name={isDropdownVisible ? "chevron-up" : "chevron-down"} size={15} color="#333" />
+          <Icon name={isDropdownVisible ? 'chevron-up' : 'chevron-down'} size={15} color="#333" />
         </TouchableOpacity>
 
         {/* Modal for Dropdown */}
@@ -100,7 +97,7 @@ const StatementScreen = () => {
         >
           <View style={styles.modalOverlay}>
             <View style={styles.modalContainer}>
-              <Text style={styles.modalTitle}>Choose Date Range</Text>
+              <Text style={styles.modalTitle}>اختر التاريخ</Text>
               {options.map((option, index) => (
                 <TouchableOpacity
                   key={index}
@@ -116,54 +113,60 @@ const StatementScreen = () => {
       </View>
 
       {/* Date Inputs */}
-      <View style={styles.dateContainer}>
-        <Text style={styles.dateLabel}>From</Text>
-        <DateTimePicker
-          value={isDatePickerDisabled ? new Date('2000-01-01') : fromDate} // Use a default date if disabled
-          mode="date"
-          display="default"
-          onChange={(event, selectedDate) => {
-            if (isDatePickerDisabled) {
-              setFromDate(''); // Set value to an empty string if disabled
-            } else {
-              setFromDate(selectedDate || fromDate);
-            }
-          }}
-          style={styles.datePicker}
-          disabled={isDatePickerDisabled} // Disable if "All Dates" is selected
-        />
-      </View>
+      {selectedItem.value !== '1' && ( // Only show date pickers if 'Custom' is selected
+        <>
+          <View style={styles.dateContainer}>
+            <Text style={styles.dateLabel}>من</Text>
+            <TouchableOpacity onPress={() => setShowFromDatePicker(true)}>
+              <Text>{formatDate(fromDate)}</Text>
+            </TouchableOpacity>
 
-      <View style={styles.dateContainer}>
-        <Text style={styles.dateLabel}>To</Text>
-        <DateTimePicker
-          value={isDatePickerDisabled ? new Date() : toDate} // Set to current date if disabled
-          mode="date"
-          display="default"
-          onChange={(event, selectedDate) => {
-            if (isDatePickerDisabled) {
-              setToDate(new Date()); // Set to current date if disabled
-            } else {
-              setToDate(selectedDate || toDate);
-            }
-          }}
-          style={styles.datePicker}
-          disabled={isDatePickerDisabled} // Disable if "All Dates" is selected
-        />
-      </View>
+            {showFromDatePicker && (
+              <DateTimePicker
+                value={fromDate}
+                mode="date"
+                display="default"
+                onChange={(event, selectedDate) => {
+                  setShowFromDatePicker(false);
+                  if (selectedDate) setFromDate(selectedDate);
+                }}
+              />
+            )}
+          </View>
+
+          <View style={styles.dateContainer}>
+            <Text style={styles.dateLabel}>إلى</Text>
+            <TouchableOpacity onPress={() => setShowToDatePicker(true)}>
+              <Text>{formatDate(toDate)}</Text>
+            </TouchableOpacity>
+
+            {showToDatePicker && (
+              <DateTimePicker
+                value={toDate}
+                mode="date"
+                display="default"
+                onChange={(event, selectedDate) => {
+                  setShowToDatePicker(false);
+                  if (selectedDate) setToDate(selectedDate);
+                }}
+              />
+            )}
+          </View>
+        </>
+      )}
 
       {/* Generate Button */}
       <TouchableOpacity
         style={styles.generateButton}
         onPress={() => setIsGenerated(true)} // Set generated state to true
       >
-        <Text style={styles.generateButtonText}>Generate</Text>
+        <Text style={styles.generateButtonText}>ضرب</Text>
       </TouchableOpacity>
 
       {/* Table for Statement */}
       {isGenerated && (
         <View style={styles.container}>
-          <Text style={styles.title}>Student Statement</Text>
+          <Text style={styles.title}>بيان الطالب</Text>
           <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
             <Row data={tableHead} style={styles.head} textStyle={styles.headText} />
             <Rows data={tableRows} textStyle={styles.text} />
@@ -173,7 +176,6 @@ const StatementScreen = () => {
     </ScrollView>
   );
 };
-
 const styles = StyleSheet.create({
   container1: {
     flex: 1,
@@ -195,13 +197,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 19,
     fontWeight: 'bold',
-    color: '#FF9800',
-    textAlign: 'center',
+    color: '#4caf50',
+    alignSelf: 'center',
     marginBottom: 8
   },
   subtitle: {
     fontSize: 16,
     color: '#FFFF00',
+    alignSelf: 'center'
+
   },
   dropdownContainer: {
     width: '100%',
@@ -209,7 +213,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   dropdownButton: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse', // Reverse the order of text and icon
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#fff',
@@ -220,7 +224,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 5,
-    width: 370,
+    width: '100%',
     height: 50,
   },
   dropdownButtonText: {
@@ -269,10 +273,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#7a7a7a',
     marginBottom: 5,
+    textAlign: 'right'
   },
   datePicker: {
     width: '100%',
-  },
+     },
   generateButton: {
     backgroundColor: '#4caf50',
     paddingVertical: 15,

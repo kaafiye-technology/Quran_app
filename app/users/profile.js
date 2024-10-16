@@ -68,12 +68,12 @@ const ProfileScreen = () => {
         <View style={styles.idBox}>
         <MaterialCommunityIcons name="card-account-details" size={30} color="#4CAF50" style={styles.icon}/>
           <Text style={styles.idTitle}>{user?.auto_id}</Text>
-          <Text style={styles.idSubtitle}>Student Id</Text>
+          <Text style={styles.idSubtitle}>رقم الطالب / ــة</Text>
         </View>
         <View style={styles.idBox}>
         <MaterialCommunityIcons name="card-account-details-outline" size={30} color="#4CAF50" style={styles.icon}/>
           <Text style={styles.idTitle}>{user?.id}</Text>
-          <Text style={styles.idSubtitle}>Hemis Id</Text>
+          <Text style={styles.idSubtitle}>رقم ( Hemis)</Text>
         </View>
       </View>
 
@@ -81,61 +81,61 @@ const ProfileScreen = () => {
       <View style={styles.infoContainer}>
                  <View>
 
-       <Text style={styles.infoText3}>Class</Text>
+       <Text style={styles.infoText3}>الفصل</Text>
         <Text style={styles.infoSubText}>{user?.class}</Text>
         </View>
 
                  <View>
 
-        <Text style={styles.infoText}>Semester</Text>
+        <Text style={styles.infoText}>المستوى</Text>
         <Text style={styles.infoSubText1}>{user?.semester}</Text>
         </View>
          <View>
-        <Text style={styles.infoText}>Status</Text>
+        <Text style={styles.infoText}>الحالة</Text>
          <Text style={styles.infoSubText2}>{user?.status}</Text>
 </View>
       </View>
 
       {/* Logout Button */}
       <TouchableOpacity style={styles.logoutButton} onPress={() => router.push('/welcome/login')}>
-        <Text style={styles.logoutButtonText}>Logout</Text>
+        <Text style={styles.logoutButtonText}>تسجيل خروج</Text>
       </TouchableOpacity>
 
       {/* Academic Information */}
       <View style={styles.academicInfoContainer}>
          <View style={styles.line}></View>
-        <Text style={styles.academicInfoHeader}>Student Information</Text>
-         <Text style={styles.infoText2}>Campus</Text>
-        <Text style={styles.infoSubText4}>{user?.campus}</Text>
+        <Text style={styles.academicInfoHeader}>معلومات الطالب / ــة</Text>
+         <Text style={styles.infoText2}>كمبس</Text>
+        <Text style={styles.infoSubText3}>{user?.campus}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Faculty</Text>
+        <Text style={styles.infoText2}>الكلية</Text>
         <Text style={styles.infoSubText3}>{user?.faculty}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Department</Text>
+        <Text style={styles.infoText2}>القسم</Text>
         <Text style={styles.infoSubText3}>{user?.department}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Shift</Text>
+        <Text style={styles.infoText2}>الدوام</Text>
         <Text style={styles.infoSubText3}>{user?.shift}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Gender</Text>
+        <Text style={styles.infoText2}>الجنس</Text>
         <Text style={styles.infoSubText3}>{user?.gender}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Date of Birth</Text>
+        <Text style={styles.infoText2}>تاريخ الميلاد</Text>
         <Text style={styles.infoSubText3}>{user?.dob}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Place of Birth</Text>
+        <Text style={styles.infoText2}>مكان الميلاد</Text>
         <Text style={styles.infoSubText3}>{user?.pob}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Mother Name</Text>
+        <Text style={styles.infoText2}>اسم الأم</Text>
         <Text style={styles.infoSubText3}>{user?.mother}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Contact Name</Text>
+        <Text style={styles.infoText2}>إسم الولي</Text>
         <Text style={styles.infoSubText3}>{user?.contact_name}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Contact Phone</Text>
+        <Text style={styles.infoText2}>رقم الولي</Text>
         <Text style={styles.infoSubText3}>{user?.contact_tell}</Text>
         <View style={styles.academicInfoContainer1}/>
-        <Text style={styles.infoText2}>Blood Type</Text>
+        <Text style={styles.infoText2}>فصيلة الدم</Text>
         <Text style={styles.infoSubText3}>{user?.blood_group}</Text>
         <View style={styles.academicInfoContainer1}/>
 
@@ -204,7 +204,9 @@ const styles = StyleSheet.create({
   idSubtitle: {
     paddingTop: 5, // Adjust spacing between title and subtitle
     fontSize: 12,
-    color: '#666',
+    color: "#236b17",
+    fontWeight: 'bold', // Changed fontWeight to 'bold'
+
   },
   infoContainer: {
     flexDirection: 'row',
@@ -214,52 +216,45 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    
+    marginLeft:8
+
   },
   infoText3: {
     fontSize: 16,
-    fontWeight: 'bold',
     marginLeft:8
 
   },
   infoSubText: {
     fontSize: 12,
+    color: "#236b17",
+    
+
   },
   infoSubText1: {
     fontSize: 12,
-    marginLeft:35
+    marginLeft:35,
+    color: "#236b17",
+
   },
   infoSubText2: {
     fontSize: 12,
-    marginLeft:8
+    marginLeft:8,
+    color: "#236b17",
+
     
   },
   infoSubText3: {
     fontSize: 15,
-    fontWeight: 'bold',
-    marginRight: 230
-    
-  },
-  infoSubText5: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginRight: 260
-    
-  },
-  infoSubText4: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginRight: 200
-    
-  },
+    textAlign: 'right'
 
- 
+  },
+  
   infoText2: {
     fontSize: 15,
     marginTop:20,
-   color: "#FF9800",
+    color: "#236b17",
    fontWeight: 'bold',
+   textAlign: 'right'
 
   },
   logoutButton: {
@@ -273,11 +268,7 @@ const styles = StyleSheet.create({
       paddingHorizontal: 120,
        
   },
-   line: {
-    width: 2, // Line width
-    height: 15, // Line height
-    backgroundColor: 'green', // Line color
-  },
+  
   logoutButtonText: {
     color: 'white',
     fontSize: 16,
@@ -293,15 +284,16 @@ const styles = StyleSheet.create({
     width: '100%',
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    marginTop: 10
-  },
+    marginTop: 10,
+      },
   academicInfoHeader: {
     fontSize: 16,
     fontWeight: 'bold',
     position: 'absolute',
     marginTop: 18,
-    left: 5,
-    color: "#236b17",
+    color: "#FF9800",
+    textAlign: 'right', // Align text content to the right
+    right: 5,           // Position the element on the right side of the container    
 
   },
   academicInfoText: {

@@ -15,7 +15,7 @@ const getCurrentDate = () => {
 const getCurrentDay = () => {
   const today = new Date();
   const options = { weekday: 'long' };
-  return today.toLocaleDateString('en-US', options);
+  return today.toLocaleDateString('ar-SA', options);
 };
 
 const SemesterSubjects = () => {
@@ -154,8 +154,8 @@ const SemesterSubjects = () => {
       </View>
 
       <View style={styles.semesterContainer}>
-        <FontAwesome name="bookmark" size={24} color="blue" />
-        <Text style={styles.semesterText}>Current Semester</Text>
+        <FontAwesome name="bookmark" size={24} color="#FF9800" style={styles.icon} />
+        <Text style={styles.semesterText}>مستوى الحالي</Text>
       </View>
 
       {subjects.map((subject) => (
@@ -164,17 +164,19 @@ const SemesterSubjects = () => {
             style={styles.subjectContainer}
             onPress={() => toggleExpand(subject.id)}
           >
-            <View style={styles.subjectIcon}>
-              <FontAwesome name="file-text" size={24} color="orange" />
-            </View>
-            <Text style={styles.subjectText}>{subject.course}</Text>
-
-            <FontAwesome
+             <FontAwesome
               name={expandedSubject === subject.id ? 'chevron-up' : 'chevron-down'}
               size={18}
               color="gray"
               style={styles.arrowIcon}
             />
+                        <Text style={styles.subjectText}>{subject.course}</Text>
+
+            <View style={styles.subjectIcon}>
+              <FontAwesome name="file-text" size={24} color="orange" />
+            </View>
+
+           
           </TouchableOpacity>
 
           {expandedSubject === subject.id && (
@@ -205,7 +207,7 @@ const SemesterSubjects = () => {
         onPress={handleSave}
         disabled={!isAnyRatingGiven()} // Disable the button if no rating is given
       >
-        <Text style={styles.saveText}>Save</Text>
+        <Text style={styles.saveText}>حفظ</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -214,6 +216,11 @@ const SemesterSubjects = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+  },
+  icon: {
+    position: 'absolute',
+    right: 0, // Align icon to the right
+    padding: 10,
   },
   header: {
     alignItems: 'center',
@@ -224,8 +231,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   dayText: {
-    fontSize: 16,
-    color: 'gray',
+    fontSize: 20,
+    color: "#236b17",
   },
   semesterContainer: {
     flexDirection: 'row',
@@ -236,8 +243,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   semesterText: {
-    marginLeft: 10,
+    marginRight: 25,
     fontSize: 16,
+    color: "#236b17",
+    fontWeight: 'bold',
+    textAlign: 'right', // Align text content to the right
+    flex: 1, // Ensure the text takes up full space within the row
   },
   subjectContainer: {
     flexDirection: 'row',
@@ -255,9 +266,10 @@ const styles = StyleSheet.create({
   subjectText: {
     fontSize: 16,
     fontWeight: 'bold',
+    marginRight: 15
   },
   arrowIcon: {
-    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   expandedContainer: {
     padding: 15,

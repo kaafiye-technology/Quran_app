@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Modal,Dimensions } from 'react-native';
 import { Icon } from 'react-native-elements'; // Assuming you're using react-native-elements for icons
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,6 +12,7 @@ const ReportCard = () => {
   const [percentGained, setPercentGained] = useState(0); // State for percentage gained
   const [isDropdownVisible, setDropdownVisible] = useState(false); // Modal visibility state
   const [selectedItem, setSelectedItem] = useState({name: 'المستوى الأول', value: '1'}); // Default selected item
+const { height, width } = Dimensions.get('window');
 
   const url = 'https://db.al-marwaziuniversity.so/api/report';
 
@@ -22,7 +23,7 @@ const ReportCard = () => {
         const userData = JSON.parse(jsonValue);
 
         const values1 = {
-          sp: 537,
+          sp: 610,
           std_id: userData.result.auto_id,
         };
 
@@ -84,19 +85,18 @@ const ReportCard = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {/* User Info Section */}
       <View style={styles.infoSection}>
-        <Text style={styles.infoText}><Text style={styles.bold}>Name:</Text> <Text style={styles.bold1}> {user?.name}</Text></Text>
-        <Text style={styles.infoText}><Text style={styles.bold}>Faculty:</Text><Text style={styles.bold1}> {user?.faculty}</Text></Text>
-        <Text style={styles.infoText}><Text style={styles.bold}>Department:</Text> <Text style={styles.bold1}>{user?.department}</Text></Text>
-        <Text style={styles.infoText}><Text style={styles.bold}>Class:</Text> <Text style={styles.bold1}>{user?.class}</Text></Text>
-        <Text style={styles.infoText}><Text style={styles.bold}>Current Semester:</Text> <Text style={styles.bold1}>{user?.semester}</Text></Text>
-        <Text style={styles.infoText}><Text style={styles.bold}>Class Position:</Text><Text style={styles.bold1}> {user?.kaalinta} students</Text></Text>
-        <Text style={styles.infoText}><Text style={styles.bold}>Department Position:</Text><Text style={styles.bold1}> {user?.depart} students</Text></Text>
-        <Text style={styles.infoText}><Text style={styles.bold}>Percent Gained:</Text><Text style={styles.bold1}> {percentGained}% Total Marks: {totalMarks}</Text></Text>
+        <Text style={styles.infoText}><Text style={styles.bold}>الإسم:</Text> <Text style={styles.bold1}> {user?.name}</Text></Text>
+        <Text style={styles.infoText}><Text style={styles.bold}>الكلية:</Text><Text style={styles.bold1}> {user?.faculty}</Text></Text>
+        <Text style={styles.infoText}><Text style={styles.bold}>قسم:</Text> <Text style={styles.bold1}>{user?.department}</Text></Text>
+        <Text style={styles.infoText}><Text style={styles.bold}>الفصل:</Text> <Text style={styles.bold1}>{user?.class}</Text></Text>
+        <Text style={styles.infoText}><Text style={styles.bold}>مستوى الحالي:</Text> <Text style={styles.bold1}>{user?.semester}</Text></Text>
+        <Text style={styles.infoText}><Text style={styles.bold}>الترتيب:</Text><Text style={styles.bold1}> {user?.kaalinta} </Text></Text>
+        <Text style={styles.infoText}><Text style={styles.bold}>النسبة المئوية:</Text><Text style={styles.bold1}> {percentGained}% مجموع الدرجات: {totalMarks}</Text></Text>
       </View>
-
+     
       {/* Custom Dropdown */}
       <View style={styles.dropdownContainer}>
-        <Text style={styles.modalTitle}>Choose Semester</Text>
+        <Text style={styles.modalTitle}>اختر المستوى</Text>
         <TouchableOpacity
           style={styles.dropdownButton}
           onPress={() => setDropdownVisible(true)}
@@ -113,7 +113,7 @@ const ReportCard = () => {
         >
           <View style={styles.modalOverlay}>
             <View style={styles.modalContainer}>
-              <Text style={styles.modalTitle}>Choose Semester</Text>
+              <Text style={styles.modalTitle}>اختر المستوى</Text>
               {options.map((option, index) => (
                 <TouchableOpacity
                   key={index}
@@ -216,18 +216,18 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 20,
     elevation: 2,
-    
   },
   infoText: {
     fontSize: 14,
     marginVertical: 2,
     fontWeight: 'bold',
+    textAlign: 'right',
 
   },
   bold: {
     fontWeight: 'bold',
-    
-  }, bold1: {
+  }, 
+  bold1: {
     color: '#236b17',
     fontSize: 16,
     
@@ -254,9 +254,10 @@ const styles = StyleSheet.create({
   },
   dropdownButtonText: {
     fontSize: 16,
-    color: '#333',
+    color: '#236b17',
     textAlign: 'right',
     flex: 1, 
+    fontWeight: 'bold',
   },
   modalOverlay: {
     flex: 1,
@@ -277,6 +278,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
     fontWeight: 'bold',
+    textAlign: 'right',
+    color: '#FF9800',
+
   },
   modalItem: {
     paddingVertical: 8,
@@ -290,7 +294,8 @@ const styles = StyleSheet.create({
   modalItemText: {
     fontSize: 16,
     color: '#333',
-    textAlign: 'right'
+    textAlign: 'right',
+    fontWeight: 'bold',
 
   },
   courseTitle: {
@@ -299,21 +304,17 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     color: '#fff',
     textAlign: 'center',
-    paddingBottom: 24
   },
   subjectContainer: {
     backgroundColor: '#FF9800',
     padding: 12,
     borderRadius: 28,
-    marginBottom: 63, // Space between subject containers
+    marginBottom: 110, // Space between subject containers
     alignItems: 'center',
     width: '100%',
-    height: '11%'
-
+    height: 310,
   },
-  lastSubjectContainer: {
-    marginBottom: 0, // Remove margin for the last subject container
-  },
+ 
   marksContainer: {
     backgroundColor: '#236b17',
     padding: 16,
@@ -321,10 +322,9 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 28,
     borderBottomLeftRadius: 28,
     width: '107%', // Ensure it fits within the container
-
   },
   row: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse', // Change to 'row-reverse' to position the label on the right
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
@@ -333,15 +333,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#fff',
-    width: '30%',
+    width: '30%', // Adjust width if necessary
   },
   input: {
     backgroundColor: '#f0f0f0',
     borderRadius: 5,
     paddingVertical: 8,
     paddingHorizontal: 15,
-    width: '65%',
+    width: '65%', // Adjust width if necessary
     fontSize: 16,
+    textAlign: 'right'
   },
 });
 

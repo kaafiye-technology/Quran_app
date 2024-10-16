@@ -60,7 +60,7 @@ if( update== 'Not Updated' ){
       {/* University Logo */}
       <View style={styles.logoContainer}>
         <Image source={{uri: 'https://al-marwaziuniversity.so/uploads/ktc_edit_sp/logo/marwaziunivbersity.png_ktceditsp_20240521065859.png' }} style={styles.headerImg} alt='Logo' />
-                <Text style={styles.logoText}>Student Portal</Text>
+                <Text style={styles.logoText}>بوابة الطالب/ ــة</Text>
 
 
       </View>
@@ -69,30 +69,30 @@ if( update== 'Not Updated' ){
       <View style={styles.featuresContainer}>
         <Pressable style={styles.feature}  onPress={() => router.push('/examination/semesters')}>
           <Icon name="file-document-outline" size={30} color="#4CAF50" />
-          <Text style={styles.featureText}>Exam Results</Text>
+          <Text style={styles.featureText}>نتائج الإمتحانات</Text>
         </Pressable>
 
         <Pressable style={styles.feature}  onPress={() => router.push('/finance/semesters')}>
           <Icon name="cash" size={30} color="#FF9800" />
-          <Text style={styles.featureText}>Finance</Text>
+          <Text style={styles.featureText}>الرسوم المالية</Text>
         </Pressable>
 
-        <Pressable style={styles.feature}  onPress={() => router.push('/timetable/semesters')}>
+        <Pressable style={styles.feature}  onPress={() => router.push('/timetable/timetable')}>
           <Icon name="calendar-outline" size={30} color="#2196F3" />
-          <Text style={styles.featureText}>Timetable</Text>
+          <Text style={styles.featureText}>الجدول الدراسي</Text>
         </Pressable>
 
         <Pressable style={styles.feature} onPress={() => router.push('/attendance/attendence')}>
           <Icon name="check-circle-outline" size={30} color="#9C27B0"  />
-          <Text style={styles.featureText}>Attendance</Text>
+          <Text style={styles.featureText}>الحضور</Text>
         </Pressable>
         <Pressable style={styles.feature} onPress={() => router.push('/evaluation/evaluation')}>
           <Icon name="chart-bar" size={30} color="#FF9800"  />
-          <Text style={styles.featureText}>Evaluation</Text>
+          <Text style={styles.featureText}>التقييم</Text>
         </Pressable>
         <Pressable style={styles.feature} onPress={() => router.push('/users/profile')}>
           <Icon name="account" size={30} color="#9C27B0"  />
-          <Text style={styles.featureText}>Profile</Text>
+          <Text style={styles.featureText}>ملف الطالب</Text>
         </Pressable>
       </View>
     </View>
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   feature: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse', // Reverse the icon and text
     alignItems: 'center',
     backgroundColor: '#FFF',
     padding: 15,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   featureText: {
     fontSize: 18,
-    marginLeft: 20,
+    marginRight: 20, // Adds space between the text and the icon (since we reversed the direction)
     color: '#333',
   },
   headerImg:{

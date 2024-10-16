@@ -47,32 +47,32 @@ const semesters = () => {
     <View style={styles.container}>
       <View style={styles.feature1}>
         <Image source={require('../../assets/finance.jpg')} style={styles.image} />
-        <Text style={styles.title}>Finance Information</Text>
-        <Text style={styles.subtitle}>Al-Marwazi University Portal</Text>
+        <Text style={styles.title}>المعلومات المالية</Text>
+        <Text style={styles.subtitle}>Finance Information</Text>
       </View>
 
       <View style={styles.feature}>
         <Icon name="gift-outline" size={30} color="#FF9800" />
-        <Text style={styles.featureText}>Tuition Fee</Text>
+        <Text style={styles.featureText}>الرسوم الشهرية</Text>
         <Text style={styles.resultText}>${secondData?.fee}</Text>
       </View>
 
       <View style={styles.feature}>
         <Icon name="cash" size={30} color="#FF9800" />
-        <Text style={styles.featureText}>Balance</Text>
+        <Text style={styles.featureText}>الباقي</Text>
         <Text style={styles.resultText1}>${balance?.balance}</Text>
       </View>
 
       <Pressable style={styles.feature} onPress={() => router.push('/finance/report')}>
         <Icon name="percent" size={30} color="#9C27B0" />
-        <Text style={styles.featureText}>Finance Statement Detail</Text>
-        <Icon name="arrow-right" size={25} color="black" style={styles.icon} />
+        <Text style={styles.featureText}>تفاصيل الرسوم المالية</Text>
+        <Icon name="arrow-left" size={25} color="black" style={styles.icon} />
       </Pressable>
 
       <Pressable style={styles.feature} onPress={() => router.push('/finance/statement')}>
         <Icon name="file-document-outline" size={30} color="#9C27B0" />
-        <Text style={styles.featureText}>All Receipts</Text>
-        <Icon name="arrow-right" size={25} color="black" style={styles.icon1} />
+        <Text style={styles.featureText}>جميع الرسوم المسددة</Text>
+        <Icon name="arrow-left" size={25} color="black" style={styles.icon} />
       </Pressable>
     </View>
   );
@@ -103,15 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  feature: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#f9f9f9',
-    padding: 15,
-    marginVertical: 10,
-    borderRadius: 10,
-    elevation: 2,
-  },
+ 
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -121,27 +113,35 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#FFFF00',
   },
+  feature: {
+    flexDirection: 'row-reverse', // Reverse the icon and text
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    padding: Platform.OS === 'ios' ? 20 : 15,  // Different padding for iOS and Android
+    marginVertical: 10,
+    borderRadius: 10,
+    elevation: 2,
+  },
   featureText: {
-    fontSize: 18,
-    marginLeft: 20,
+    fontSize: width * 0.045,  // Responsive font size
+    marginLeft: 40,
     color: '#333',
+    marginRight: 20,  // Adds space between the text and the first icon
+  },
+  icon: {
+    marginRight: 'auto',  // Pushes the arrow icon to the left automatically
   },
   resultText: {
     fontSize: 18,
-    marginLeft: 'auto',  // Automatically adjust spacing
+    marginRight: 'auto',
     color: 'blue',
     fontWeight: 'bold',
   },
   resultText1: {
     fontSize: 18,
-    marginLeft: 'auto',
     color: '#236b17',
     fontWeight: 'bold',
+    marginRight: 'auto',
   },
-  icon: {
-    marginLeft: 'auto',  // Automatically move the icon to the right
-  },
-  icon1: {
-    marginLeft: 'auto',
-  },
+  
 });

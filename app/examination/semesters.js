@@ -52,21 +52,21 @@ const Semesters = () => {
     <View style={styles.container}>
       <View style={styles.feature1} >
         <Image source={require('../../assets/exam.jpg')} style={styles.image} />
-        <Text style={styles.title}>Examination Results</Text>
-        <Text style={styles.subtitle}>Al-Marwazi University Portal</Text>
+        <Text style={styles.title}>نتائج الإمتحانات</Text>
+        <Text style={styles.subtitle}>Examination Results</Text>
       </View>
 
-      <Pressable style={styles.feature} onPress={() => router.push('/examination/transcript')}>
-        <Icon name="dots-grid" size={30} color="#FF9800" />
-        <Text style={styles.featureText}>Show as Transcript</Text>
-        <Icon name="arrow-right" size={25} color="black" style={styles.icon} />
-      </Pressable>
+          <Pressable style={styles.feature} onPress={() => router.push('/examination/transcript')}>
+            <Icon name="dots-grid" size={30} color="#FF9800" />
+            <Text style={styles.featureText}>كشف الدرجات</Text>
+            <Icon name="arrow-left" size={25} color="black" style={styles.icon} />
+          </Pressable>
 
-      <Pressable style={styles.feature} onPress={() => router.push('/examination/semesterwise')}>
-        <Icon name="calendar-blank" size={30} color="#9C27B0" />
-        <Text style={styles.featureText}>Show as Semester Wise</Text>
-        <Icon name="arrow-right" size={25} color="black" style={styles.icon1} />
-      </Pressable>
+          <Pressable style={styles.feature} onPress={() => router.push('/examination/semesterwise')}>
+            <Icon name="calendar-blank" size={30} color="#9C27B0" />
+            <Text style={styles.featureText}>درجات المستويات</Text>
+            <Icon name="arrow-left" size={25} color="black" style={styles.icon} />
+          </Pressable>
     </View>
   );
 };
@@ -96,15 +96,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',     
     marginBottom: 20,
   },
-  feature: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFF',
-    padding: Platform.OS === 'ios' ? 20 : 15,  // Different padding for iOS and Android
-    marginVertical: 10,
-    borderRadius: 10,
-    elevation: 2,
-  },
+  
   title: {
     fontSize: width * 0.06,  // Responsive font size
     fontWeight: 'bold',
@@ -114,15 +106,23 @@ const styles = StyleSheet.create({
     fontSize: width * 0.04,  // Responsive font size
     color: '#FFFF00',
   },
+  feature: {
+    flexDirection: 'row-reverse', // Reverse the icon and text
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    padding: Platform.OS === 'ios' ? 20 : 15,  // Different padding for iOS and Android
+    marginVertical: 10,
+    borderRadius: 10,
+    elevation: 2,
+  },
   featureText: {
     fontSize: width * 0.045,  // Responsive font size
     marginLeft: 40,
     color: '#333',
+    marginRight: 20,  // Adds space between the text and the first icon
   },
   icon: {
-    marginLeft: 'auto',   // Align to right dynamically
+    marginRight: 'auto',  // Pushes the arrow icon to the left automatically
   },
-  icon1: {
-    marginLeft: 'auto',   // Align to right dynamically
-  }
+ 
 });

@@ -16,7 +16,7 @@ import axios from 'axios';
   //   ['فقه العبادات4', '67', 'passed'],
   // ];
   const App = () => {
-    const tableHead = ['Date', 'Fee', 'Receipt', ];
+    const tableHead = ['الإيصال', 'الرسوم', 'التاريخ', ];
     // const tableData = [
     //   {course:'الفرائض2', total:'59.5', status:'passed'},
     //   {course:'قاعة بحث', total:'72', status:'passed'},
@@ -62,7 +62,7 @@ useEffect(()=>{
 },[])
 
 
-  const tableRows = marks.map(item => [item.date, item.Description, item.CR]);
+  const tableRows = marks.map(item => [ item.CR,item.Description,item.date]);
 // Step 1: Extract the 'total' values
 const totalValues = marks.map(item => parseFloat(item.total));
 
@@ -76,7 +76,7 @@ console.log('Sum of totals:', sum);
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
         <Card containerStyle={styles.card}>
-          <Text h3 style={styles.title}>Student Receipt</Text>
+          <Text h3 style={styles.title}>إيصال الطالب / ــة</Text>
           <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
             <Row data={tableHead} style={styles.head} textStyle={styles.headText} />
             <Rows data={tableRows} textStyle={styles.text} />
