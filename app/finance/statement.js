@@ -16,7 +16,7 @@ import axios from 'axios';
   //   ['فقه العبادات4', '67', 'passed'],
   // ];
   const App = () => {
-    const tableHead = ['الإيصال', 'الرسوم', 'التاريخ', ];
+    const tableHead = ['المدفوع', 'الرسوم', 'التاريخ', ];
     // const tableData = [
     //   {course:'الفرائض2', total:'59.5', status:'passed'},
     //   {course:'قاعة بحث', total:'72', status:'passed'},
@@ -76,7 +76,7 @@ console.log('Sum of totals:', sum);
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
         <Card containerStyle={styles.card}>
-          <Text h3 style={styles.title}>إيصال الطالب / ــة</Text>
+          <Text h3 style={styles.title}>مدفوعات الطالب/ــة</Text>
           <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
             <Row data={tableHead} style={styles.head} textStyle={styles.headText} />
             <Rows data={tableRows} textStyle={styles.text} />

@@ -62,9 +62,20 @@ const StatementScreen = () => {
   const handleSelect = (item) => {
     setSelectedItem(item);
     setDropdownVisible(false); // Close the modal when an item is selected
+    
+    if (item.value === '1') {
+      // If 'جميع التاريخ' is selected, set the fromDate to '2000-01-01'
+      setFromDate(new Date('2000-01-01'));
+      setToDate(new Date()); // Keep toDate as current date
+    } else if (item.value === '2') {
+      // If 'مخصص' is selected, set both fromDate and toDate to current date
+      const currentDate = new Date();
+      setFromDate(currentDate);
+      setToDate(currentDate);
+    }
   };
 
-  const tableHead = ['الباقي', 'الإيصال', 'رفع الرسوم', 'الرسوم', 'التاريخ'];
+  const tableHead = ['الباقي', 'المدفوع', 'الرسوم', 'الرسوم', 'التاريخ'];
   const tableRows = marks.map(item => [item.Balance, item.CR, item.DR, item.Description, item.date]);
 
   return (
@@ -160,13 +171,13 @@ const StatementScreen = () => {
         style={styles.generateButton}
         onPress={() => setIsGenerated(true)} // Set generated state to true
       >
-        <Text style={styles.generateButtonText}>ضرب</Text>
+        <Text style={styles.generateButtonText}>اختر</Text>
       </TouchableOpacity>
 
       {/* Table for Statement */}
       {isGenerated && (
         <View style={styles.container}>
-          <Text style={styles.title}>بيان الطالب</Text>
+          <Text style={styles.title}>تفاصيل الرسوم المالية</Text>
           <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
             <Row data={tableHead} style={styles.head} textStyle={styles.headText} />
             <Rows data={tableRows} textStyle={styles.text} />
@@ -176,6 +187,7 @@ const StatementScreen = () => {
     </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
   container1: {
     flex: 1,
@@ -197,7 +209,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 19,
     fontWeight: 'bold',
-    color: '#4caf50',
+    color: '#FFFF00',
     alignSelf: 'center',
     marginBottom: 8
   },

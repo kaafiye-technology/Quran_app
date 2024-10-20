@@ -219,15 +219,21 @@ const styles = StyleSheet.create({
     marginLeft:8
 
   },
-  infoText3: {
+  infoText: {
     fontSize: 16,
     marginLeft:8
 
   },
+  infoText3: {
+    fontSize: 16,
+    marginRight:20
+
+  },
+  
   infoSubText: {
     fontSize: 12,
     color: "#236b17",
-    
+
 
   },
   infoSubText1: {

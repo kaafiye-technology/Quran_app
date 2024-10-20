@@ -64,7 +64,7 @@ const Semesters = () => {
 
           <Pressable style={styles.feature} onPress={() => router.push('/examination/semesterwise')}>
             <Icon name="calendar-blank" size={30} color="#9C27B0" />
-            <Text style={styles.featureText}>درجات المستويات</Text>
+            <Text style={styles.featureText}>نتائج المستويات</Text>
             <Icon name="arrow-left" size={25} color="black" style={styles.icon} />
           </Pressable>
     </View>

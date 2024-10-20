@@ -67,16 +67,11 @@ if( update== 'Not Updated' ){
 
       {/* Features */}
       <View style={styles.featuresContainer}>
-        <Pressable style={styles.feature}  onPress={() => router.push('/examination/semesters')}>
-          <Icon name="file-document-outline" size={30} color="#4CAF50" />
-          <Text style={styles.featureText}>نتائج الإمتحانات</Text>
-        </Pressable>
 
-        <Pressable style={styles.feature}  onPress={() => router.push('/finance/semesters')}>
-          <Icon name="cash" size={30} color="#FF9800" />
-          <Text style={styles.featureText}>الرسوم المالية</Text>
+      <Pressable style={styles.feature} onPress={() => router.push('/users/profile')}>
+          <Icon name="account" size={30} color="#9C27B0"  />
+          <Text style={styles.featureText}>ملف الطالب</Text>
         </Pressable>
-
         <Pressable style={styles.feature}  onPress={() => router.push('/timetable/timetable')}>
           <Icon name="calendar-outline" size={30} color="#2196F3" />
           <Text style={styles.featureText}>الجدول الدراسي</Text>
@@ -86,14 +81,22 @@ if( update== 'Not Updated' ){
           <Icon name="check-circle-outline" size={30} color="#9C27B0"  />
           <Text style={styles.featureText}>الحضور</Text>
         </Pressable>
+
+        <Pressable style={styles.feature}  onPress={() => router.push('/finance/semesters')}>
+          <Icon name="cash" size={30} color="#FF9800" />
+          <Text style={styles.featureText}>الرسوم المالية</Text>
+        </Pressable>
+
+        <Pressable style={styles.feature}  onPress={() => router.push('/examination/semesters')}>
+          <Icon name="file-document-outline" size={30} color="#4CAF50" />
+          <Text style={styles.featureText}>نتائج الإمتحانات</Text>
+        </Pressable>
+ 
         <Pressable style={styles.feature} onPress={() => router.push('/evaluation/evaluation')}>
           <Icon name="chart-bar" size={30} color="#FF9800"  />
           <Text style={styles.featureText}>التقييم</Text>
         </Pressable>
-        <Pressable style={styles.feature} onPress={() => router.push('/users/profile')}>
-          <Icon name="account" size={30} color="#9C27B0"  />
-          <Text style={styles.featureText}>ملف الطالب</Text>
-        </Pressable>
+       
       </View>
     </View>
   );

@@ -68,7 +68,7 @@ export default function Login(){
     
         <View style={styles.header}>
     <Image source={{uri: 'https://al-marwaziuniversity.so/uploads/ktc_edit_sp/logo/marwaziunivbersity.png_ktceditsp_20240521065859.png' }} style={styles.headerImg} alt='Logo' />
-    <Text style={styles.title}>Log In</Text>
+    <Text style={styles.title}>مرحبا بكم في برنامج تيسير</Text>
         </View>
     
     <View style={styles.form}>
