@@ -14,7 +14,7 @@ const ReportCard = () => {
   const [selectedItem, setSelectedItem] = useState({name: 'المستوى الأول', value: '1'}); // Default selected item
 const { height, width } = Dimensions.get('window');
 
-  const url = 'https://db.al-marwaziuniversity.so/api/report';
+  const url = 'https://quraan.kaafiye.com/api/report';
 
   const fetchBalance = async () => {
     try {
@@ -23,12 +23,12 @@ const { height, width } = Dimensions.get('window');
         const userData = JSON.parse(jsonValue);
 
         const values1 = {
-          sp: 610,
+          sp: 568,
           std_id: userData.result.auto_id,
         };
 
         const values2 = {
-          sp: 592,
+          sp: 567,
           std_id: userData.result.auto_id,
           semester_id: selectedItem.value, // Use selectedItem.value for the selected semester
         };
@@ -141,10 +141,10 @@ const { height, width } = Dimensions.get('window');
 
       <View style={styles.marksContainer}>
         <View style={styles.row}>
-          <Text style={styles.label}>درجة الحضور1</Text>
+          <Text style={styles.label}>أ لإمتحان ألخاص</Text>
           <TextInput 
             style={styles.input} 
-            value={(subject?.attendance1 || 0).toString()} 
+            value={(subject?.specail || 0).toString()} 
             editable={false} 
           />
         </View>
@@ -159,22 +159,15 @@ const { height, width } = Dimensions.get('window');
         </View>
 
         <View style={styles.row}>
-          <Text style={styles.label}>درجة المشاركة</Text>
+          <Text style={styles.label}>ألإمتحان دور ألثاني</Text>
           <TextInput 
             style={styles.input} 
-            value={(subject?.participation || 0).toString()} 
+            value={(subject?.second || 0).toString()} 
             editable={false} 
           />
         </View>
 
-        <View style={styles.row}>
-          <Text style={styles.label}>درجة الحضور2</Text>
-          <TextInput 
-            style={styles.input} 
-            value={(subject?.attendance2 || 0).toString()} 
-            editable={false} 
-          />
-        </View>
+      
 
         <View style={styles.row}>
           <Text style={styles.label}>درجة الامتحان النهائي</Text>
@@ -197,7 +190,7 @@ const { height, width } = Dimensions.get('window');
     </View>
   ))
 ) : (
-  <Text>No subjects available for this semester.</Text>
+  <Text style={styles.Text} >لا توجد مواد متاحة لهذا الفصل الدراسي.</Text>
 )}
 
     </ScrollView>
@@ -207,7 +200,7 @@ const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#071533',
     
   },
   infoSection: {
@@ -228,8 +221,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }, 
   bold1: {
-    color: '#236b17',
+    color: '#06ab8b',
     fontSize: 16,
+    
+  },
+  Text: {
+    color: '#fff',
+    textAlign: 'right'
     
   },
   dropdownContainer: {
@@ -254,7 +252,7 @@ const styles = StyleSheet.create({
   },
   dropdownButtonText: {
     fontSize: 16,
-    color: '#236b17',
+    color: '#06ab8b',
     textAlign: 'right',
     flex: 1, 
     fontWeight: 'bold',
@@ -267,11 +265,10 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: '100%',   
-    backgroundColor: '#fff',
     borderRadius: 8,
     padding: 20,
     elevation: 5,
-    backgroundColor: '#FF9800'
+    backgroundColor: '#071533'
 
   },
   modalTitle: {
@@ -279,7 +276,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontWeight: 'bold',
     textAlign: 'right',
-    color: '#FF9800',
+    color: '#06ab8b',
 
   },
   modalItem: {
@@ -302,21 +299,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginVertical: 10,
-    color: '#fff',
+    color: '#071533',
     textAlign: 'center',
   },
   subjectContainer: {
-    backgroundColor: '#FF9800',
+    backgroundColor: '#fff',
     padding: 12,
     borderRadius: 28,
-    marginBottom: 110, // Space between subject containers
+    marginBottom: 60, // Space between subject containers
     alignItems: 'center',
     width: '100%',
     height: 310,
   },
  
   marksContainer: {
-    backgroundColor: '#236b17',
+    backgroundColor: '#06ab8b',
     padding: 16,
     elevation: 2,
     borderBottomRightRadius: 28,

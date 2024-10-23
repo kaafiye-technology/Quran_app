@@ -7,9 +7,9 @@ import { router } from 'expo-router';
 
 
 export default function Login(){
-    const url = 'https://db.al-marwaziuniversity.so/api/report'
+    const url = 'https://quraan.kaafiye.com/api/report'
     const [values, setValues] = useState({
-        sp: 515,
+        sp: 558,
         username: '',
         password: ''
     })
@@ -63,11 +63,11 @@ export default function Login(){
 
     console.log('values:', values, 'data:', data);
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#236b17'}}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#071533'}}>
         <View style={styles.container}>
     
         <View style={styles.header}>
-    <Image source={{uri: 'https://al-marwaziuniversity.so/uploads/ktc_edit_sp/logo/marwaziunivbersity.png_ktceditsp_20240521065859.png' }} style={styles.headerImg} alt='Logo' />
+    <Image source={{uri: 'https://quraan.kaafiye.com/uploads/ktc_edit_sp/logo/logoquranuniversity.jpeg_ktceditsp_20240606070706.jpeg' }} style={styles.headerImg} alt='Logo' />
     <Text style={styles.title}>مرحبا بكم في برنامج تيسير</Text>
         </View>
     
@@ -159,16 +159,15 @@ const styles = StyleSheet.create({
         marginVertical: 24,
     },
     btn:{
-        backgroundColor: '#075eec',
         borderRadius: 8,
         borderWidth: 1,
-        borderColor: '#FF8C00',
+        borderColor: '#06ab8b',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent:'center',
         paddingVertical: 10,
         paddingHorizontal: 20,
-        backgroundColor: '#FF8C00',
+        backgroundColor: '#06ab8b',
 
 
 

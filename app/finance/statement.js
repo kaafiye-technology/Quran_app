@@ -26,7 +26,7 @@ import axios from 'axios';
 
 
   const [marks, setMarks] = useState([]);
-  const url = 'https://db.al-marwaziuniversity.so/api/report'
+  const url = 'https://quraan.kaafiye.com/api/report'
     const { semester_id } = useLocalSearchParams();
   const fetchMarks = async () => {
       
@@ -35,7 +35,7 @@ import axios from 'axios';
     if (jsonValue != null) {
         const userData = JSON.parse(jsonValue);
         const values = {
-            sp: 586,
+            sp: 565,
             std_id: userData.result.auto_id,
             
         }
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#236b17',
+    backgroundColor: '#071533',
   },
   card: {
     width: '100%',
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   head: {
     height: 40,
-    backgroundColor: '#FF9800',
+    backgroundColor: '#06ab8b',
   },
   headText: {
     margin: 6,

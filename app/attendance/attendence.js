@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const screenWidth = Dimensions.get('window').width;
 
 const AttendanceScreen = () => {
-  const [selectedItem, setSelectedItem] = useState({ name: 'الجميع', value: '54' });
+  const [selectedItem, setSelectedItem] = useState({ name: 'الجميع', value: '76' });
   const [isDropdownVisible, setDropdownVisible] = useState(false); // Modal visibility state
   const [options, setOptions] = useState([]); // Dropdown options from API
   const [loading, setLoading] = useState(true); // For loading state
@@ -23,13 +23,13 @@ const AttendanceScreen = () => {
       if (jsonValue !== null) {
         const userData = JSON.parse(jsonValue);
         const values = {
-          sp: 608,
+          sp: 562,
           semester_id: userData.result.semester_id,
           class_id: userData.result.class_id,
         };
 
         // API call to fetch options
-        const response = await axios.post('https://db.al-marwaziuniversity.so/api/report', values);
+        const response = await axios.post('https://quraan.kaafiye.com/api/report', values);
         const result = response.data.result;
 
         // Update the options state
@@ -49,8 +49,8 @@ const AttendanceScreen = () => {
       if (jsonValue !== null) {
         const userData = JSON.parse(jsonValue);
 
-        const response = await axios.post('https://db.al-marwaziuniversity.so/api/report', {
-          sp: 609,
+        const response = await axios.post('https://quraan.kaafiye.com/api/report', {
+          sp: 561,
           auto_id: userData.result.auto_id,
           semester_id: userData.result.semester_id,
           class_id: userData.result.class_id,
@@ -83,14 +83,14 @@ const AttendanceScreen = () => {
       name: 'الغياب',
       population: subject.result.length > 0 ? subject.result[0]?.absents : 0,
       color: '#FF6384',
-      legendFontColor: '#7F7F7F',
+      legendFontColor: '#fff',
       legendFontSize: 15,
     },
     {
       name: 'الحضور',
       population: subject.result.length > 0 ? subject.result[0]?.attend : 0,
       color: '#36A2EB',
-      legendFontColor: '#7F7F7F',
+      legendFontColor: '#fff',
       legendFontSize: 15,
     },
   ];
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#071533',
     flexGrow: 1,
   },
   dropdownContainer: {
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#333',
+    color: '#fff',
   },
   detailsContainer: {
     marginTop: 20,

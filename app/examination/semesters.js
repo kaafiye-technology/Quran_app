@@ -57,7 +57,7 @@ const Semesters = () => {
       </View>
 
           <Pressable style={styles.feature} onPress={() => router.push('/examination/transcript')}>
-            <Icon name="dots-grid" size={30} color="#FF9800" />
+            <Icon name="dots-grid" size={30} color="#06ab8b" />
             <Text style={styles.featureText}>كشف الدرجات</Text>
             <Icon name="arrow-left" size={25} color="black" style={styles.icon} />
           </Pressable>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#236b17',
+    backgroundColor: '#071533',
   },
   image: {
     width: '100%',   
@@ -100,11 +100,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: width * 0.06,  // Responsive font size
     fontWeight: 'bold',
-    color: '#FFFF00',
+    color: '#06ab8b',
   },
   subtitle: {
     fontSize: width * 0.04,  // Responsive font size
-    color: '#FFFF00',
+    color: '#06ab8b',
   },
   feature: {
     flexDirection: 'row-reverse', // Reverse the icon and text

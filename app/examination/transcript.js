@@ -6,7 +6,7 @@ import axios from 'axios';
 const CourseList = () => {
   const [groupedCourses, setGroupedCourses] = useState({});
 
-  const url = 'https://db.al-marwaziuniversity.so/api/report'; // Replace with actual URL
+  const url = 'https://quraan.kaafiye.com/api/report'; // Replace with actual URL
 
   const fetchMarks = async () => {
     try {
@@ -14,7 +14,7 @@ const CourseList = () => {
       if (jsonValue != null) {
         const userData = JSON.parse(jsonValue);
         const values = {
-          sp: 591,
+          sp: 569,
           std_id: userData.result.auto_id,
         };
 
@@ -88,11 +88,13 @@ const CourseList = () => {
 const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
+    backgroundColor: '#071533',
+
   },
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#071533',
   },
   semesterContainer: {
     marginBottom: 20,
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   semesterTitle: {
-    backgroundColor: '#236b17',
+    backgroundColor: '#06ab8b',
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: 8,
-    backgroundColor: '#FF9800',
+    backgroundColor: '#06ab8b',
     borderRadius: 8,
     paddingHorizontal: 16,
     marginBottom: 16,

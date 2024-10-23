@@ -59,7 +59,7 @@ if( update== 'Not Updated' ){
     <View style={styles.container}>
       {/* University Logo */}
       <View style={styles.logoContainer}>
-        <Image source={{uri: 'https://al-marwaziuniversity.so/uploads/ktc_edit_sp/logo/marwaziunivbersity.png_ktceditsp_20240521065859.png' }} style={styles.headerImg} alt='Logo' />
+        <Image source={{uri: 'https://quraan.kaafiye.com/uploads/ktc_edit_sp/logo/logoquranuniversity.jpeg_ktceditsp_20240606070706.jpeg' }} style={styles.headerImg} alt='Logo' />
                 <Text style={styles.logoText}>بوابة الطالب/ ــة</Text>
 
 
@@ -78,22 +78,22 @@ if( update== 'Not Updated' ){
         </Pressable>
 
         <Pressable style={styles.feature} onPress={() => router.push('/attendance/attendence')}>
-          <Icon name="check-circle-outline" size={30} color="#9C27B0"  />
+          <Icon name="check-circle-outline" size={30} color="#ff3300"  />
           <Text style={styles.featureText}>الحضور</Text>
         </Pressable>
 
         <Pressable style={styles.feature}  onPress={() => router.push('/finance/semesters')}>
-          <Icon name="cash" size={30} color="#FF9800" />
+          <Icon name="cash" size={30} color="#06ab8b" />
           <Text style={styles.featureText}>الرسوم المالية</Text>
         </Pressable>
 
         <Pressable style={styles.feature}  onPress={() => router.push('/examination/semesters')}>
-          <Icon name="file-document-outline" size={30} color="#4CAF50" />
+          <Icon name="file-document-outline" size={30} color="#FF9800" />
           <Text style={styles.featureText}>نتائج الإمتحانات</Text>
         </Pressable>
  
         <Pressable style={styles.feature} onPress={() => router.push('/evaluation/evaluation')}>
-          <Icon name="chart-bar" size={30} color="#FF9800"  />
+          <Icon name="chart-bar" size={30} color="#4CAF50"  />
           <Text style={styles.featureText}>التقييم</Text>
         </Pressable>
        
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#236b17',
+    backgroundColor: '#071533',
   },
   logoContainer: {
     alignItems: 'center',

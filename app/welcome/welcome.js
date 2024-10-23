@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, View, Text, Image, StyleSheet, Button, FlatList, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 
-const reportUrl = `https://db.al-marwaziuniversity.so/api/report`;
-const url = `https://db.al-marwaziuniversity.so/`;
+const reportUrl = `https://quraan.kaafiye.com/api/report`;
+const url = `https://quraan.kaafiye.com/`;
  
 
 const DepartmentItem = ({ title, years, fee, image }) => (
@@ -20,7 +20,7 @@ const WelcomeScreen = () => {
   const [loading, setLoading] = useState(true);
   
   const values = {
-    sp: 576,
+    sp: 573,
     faculty_id: '%'
 }
   useEffect( async () => {
@@ -40,9 +40,9 @@ const WelcomeScreen = () => {
       <Image source={require('../../assets/logo.png')} style={styles.logo} />
         <Text style={styles.title}>Welcome to Our University</Text>
         <Text style={styles.welcomeMessage}>
-        Marwazi and thank you for visiting its main website. Marwazi was founded by a group of dedicated Somali scholars and is committed to the development of human potential to contribute to the implementation of Somali national development plans. Marwazi will serve the Somali nation by providing its students with world-class and relevant knowledge, skills, and ethical and moral training necessary for the 21st Century.
+        Quran University and thank you for visiting its main website. Quran University was founded by a group of dedicated Somali scholars and is committed to the development of human potential to contribute to the implementation of Somali national development plans. Marwazi will serve the Somali nation by providing its students with world-class and relevant knowledge, skills, and ethical and moral training necessary for the 21st Century.
  
- We invite qualified faculty and talented Somali students to visit our university campuses and join the growing community of scholars at Marwazi.
+ We invite qualified faculty and talented Somali students to visit our university campuses and join the growing community of scholars at Quran University.
  
  All the best
           </Text>

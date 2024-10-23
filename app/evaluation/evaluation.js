@@ -39,23 +39,23 @@ const SemesterSubjects = () => {
         const userData = JSON.parse(jsonValue);
 
         // Define the values to be sent in the first POST request
-        const values1 = { sp: 595 };
+        const values1 = { sp: 570 };
 
         // Define the values to be sent in the second POST request
         const values2 = {
-          sp: 596,
+          sp: 571,
           semester_id: userData.result.semester_id,
           class_id: userData.result.class_id
         };
 
         // Make Axios POST request for values1
-        const response1 = await axios.post('https://db.al-marwaziuniversity.so/api/report', values1);
+        const response1 = await axios.post('https://quraan.kaafiye.com/api/report', values1);
         const result1 = response1.data.result;
         setSemesters(result1);
         console.log('Semester (Response 1):', result1);
 
         // Make Axios POST request for values2
-        const response2 = await axios.post('https://db.al-marwaziuniversity.so/api/report', values2);
+        const response2 = await axios.post('https://quraan.kaafiye.com/api/report', values2);
         const result2 = response2.data.result;
         setSubjects(result2);
         console.log('Subjects (Response 2):', result2);
@@ -117,7 +117,7 @@ const SemesterSubjects = () => {
             // Only send the rating if it's greater than 0
             if (rating > 0) {
               const values3 = {
-                sp: 597,
+                sp: 572,
                 company_id: 1,
                 student_id: userData.result.auto_id,
                 question_id: semester.id, // Use semester.id here
@@ -133,7 +133,7 @@ const SemesterSubjects = () => {
               };
 
               // Send the rating via POST request
-              const response3 = await axios.post('https://db.al-marwaziuniversity.so/api/report', values3);
+              const response3 = await axios.post('https://quraan.kaafiye.com/api/report', values3);
               console.log('Rating submitted:', response3.data);
             }
           }
@@ -154,7 +154,7 @@ const SemesterSubjects = () => {
       </View>
 
       <View style={styles.semesterContainer}>
-        <FontAwesome name="bookmark" size={24} color="#FF9800" style={styles.icon} />
+        <FontAwesome name="bookmark" size={24} color="#06ab8b" style={styles.icon} />
         <Text style={styles.semesterText}>مستوى الحالي</Text>
       </View>
 
@@ -202,7 +202,7 @@ const SemesterSubjects = () => {
       <TouchableOpacity
         style={[
           styles.saveButton,
-          { backgroundColor: isAnyRatingGiven() ? '#0044cc' : '#cccccc' }
+          { backgroundColor: isAnyRatingGiven() ? '#06ab8b' : '#cccccc' }
         ]}
         onPress={handleSave}
         disabled={!isAnyRatingGiven()} // Disable the button if no rating is given
@@ -216,6 +216,8 @@ const SemesterSubjects = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    backgroundColor: '#071533',
+
   },
   icon: {
     position: 'absolute',
@@ -229,23 +231,26 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#fff',
+
   },
   dayText: {
     fontSize: 20,
-    color: "#236b17",
+    color: '#fff',
   },
   semesterContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
-    backgroundColor: '#f0f0f0',
     padding: 10,
     borderRadius: 10,
+    backgroundColor: '#071533',
+
   },
   semesterText: {
     marginRight: 25,
-    fontSize: 16,
-    color: "#236b17",
+    fontSize: 18,
+    color: "#fff",
     fontWeight: 'bold',
     textAlign: 'right', // Align text content to the right
     flex: 1, // Ensure the text takes up full space within the row
@@ -276,6 +281,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+    marginBottom: 10
   },
   teacherName: {
     fontSize: 16,
@@ -298,6 +304,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
+    
   },
   saveText: {
     color: '#fff',

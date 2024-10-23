@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const { width } = Dimensions.get('window');  // Get the screen width for responsive design
 
 const semesters = () => {
-  const url = 'https://db.al-marwaziuniversity.so/api/report';
+  const url = 'https://quraan.kaafiye.com/api/report';
 
   const [balance, setBalance] = useState([]);
   const [secondData, setSecondData] = useState([]); 
@@ -21,8 +21,8 @@ const semesters = () => {
       if (jsonValue != null) {
         const userData = JSON.parse(jsonValue);
         
-        const values1 = { sp: 540, std_id: userData.result.auto_id };
-        const values2 = { sp: 585, std_id: userData.result.auto_id };
+        const values1 = { sp: 563, std_id: userData.result.auto_id };
+        const values2 = { sp: 564, std_id: userData.result.auto_id };
         const values3 = { sp: 547, std_id: userData.result.auto_id, from: 's', to: 'a' };
   
         const response1 = await axios.post(url, values1);
@@ -52,25 +52,25 @@ const semesters = () => {
       </View>
 
       <View style={styles.feature}>
-        <Icon name="gift-outline" size={30} color="#FF9800" />
+        <Icon name="gift-outline" size={30} color="#9C27B0" />
         <Text style={styles.featureText}>الرسوم الشهرية</Text>
         <Text style={styles.resultText}>${secondData?.fee}</Text>
       </View>
 
       <View style={styles.feature}>
-        <Icon name="cash" size={30} color="#FF9800" />
+        <Icon name="cash" size={30} color="#9C27B0" />
         <Text style={styles.featureText}>الباقي</Text>
         <Text style={styles.resultText1}>${balance?.balance}</Text>
       </View>
 
       <Pressable style={styles.feature} onPress={() => router.push('/finance/report')}>
-        <Icon name="percent" size={30} color="#9C27B0" />
+        <Icon name="percent" size={30} color="#06ab8b" />
         <Text style={styles.featureText}>تفاصيل الرسوم المالية</Text>
         <Icon name="arrow-left" size={25} color="black" style={styles.icon} />
       </Pressable>
 
       <Pressable style={styles.feature} onPress={() => router.push('/finance/statement')}>
-        <Icon name="file-document-outline" size={30} color="#9C27B0" />
+        <Icon name="file-document-outline" size={30} color="#06ab8b" />
         <Text style={styles.featureText}>جميع الرسوم المسددة</Text>
         <Icon name="arrow-left" size={25} color="black" style={styles.icon} />
       </Pressable>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#236b17',
+    backgroundColor: '#071533',
   },
   image: {
     width: '100%',
@@ -107,11 +107,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FFFF00',
+    color: '#06ab8b',
   },
   subtitle: {
     fontSize: 16,
-    color: '#FFFF00',
+    color: '#06ab8b',
   },
   feature: {
     flexDirection: 'row-reverse', // Reverse the icon and text
@@ -134,12 +134,12 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 18,
     marginRight: 'auto',
-    color: 'blue',
+    color: '#06ab8b',
     fontWeight: 'bold',
   },
   resultText1: {
     fontSize: 18,
-    color: '#236b17',
+    color: '#06ab8b',
     fontWeight: 'bold',
     marginRight: 'auto',
   },

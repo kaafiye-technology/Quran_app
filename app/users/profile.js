@@ -8,7 +8,7 @@ import { router } from 'expo-router';
 const ProfileScreen = () => {
 
 
-  const url = 'https://db.al-marwaziuniversity.so/api/report'
+  const url = 'https://quraan.kaafiye.com/api/report'
    
     const [user, setUser] = useState([]);
   
@@ -20,7 +20,7 @@ const ProfileScreen = () => {
         if (jsonValue != null) {
             const userData = JSON.parse(jsonValue);
             const values = {
-                sp: 537,
+                sp: 559,
                 std_id: userData.result.auto_id
             }
 
@@ -55,7 +55,7 @@ const ProfileScreen = () => {
       {/* Profile Image */}
       <View style={styles.profileImageContainer}>
         <Image
-          source={{ uri: 'https://al-marwaziuniversity.so/uploads/ktc_edit_sp/logo/marwaziunivbersity.png_ktceditsp_20240521065859.png' }}
+          source={{ uri: 'https://quraan.kaafiye.com/uploads/ktc_edit_sp/logo/logoquranuniversity.jpeg_ktceditsp_20240606070706.jpeg' }}
           style={styles.profileImage}
         />
       </View>
@@ -66,12 +66,12 @@ const ProfileScreen = () => {
       {/* Student and Hemis IDs */}
       <View style={styles.idContainer}>
         <View style={styles.idBox}>
-        <MaterialCommunityIcons name="card-account-details" size={30} color="#4CAF50" style={styles.icon}/>
+        <MaterialCommunityIcons name="card-account-details" size={30} color="#06ab8b" style={styles.icon}/>
           <Text style={styles.idTitle}>{user?.auto_id}</Text>
           <Text style={styles.idSubtitle}>رقم الطالب / ــة</Text>
         </View>
         <View style={styles.idBox}>
-        <MaterialCommunityIcons name="card-account-details-outline" size={30} color="#4CAF50" style={styles.icon}/>
+        <MaterialCommunityIcons name="card-account-details-outline" size={30} color="#06ab8b" style={styles.icon}/>
           <Text style={styles.idTitle}>{user?.id}</Text>
           <Text style={styles.idSubtitle}>رقم ( Hemis)</Text>
         </View>
@@ -148,7 +148,7 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#071533',
     alignItems: 'center',
     padding: 20,
   },
@@ -173,6 +173,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#fff'
   },
   idContainer: {
     flexDirection: 'row',
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
   idSubtitle: {
     paddingTop: 5, // Adjust spacing between title and subtitle
     fontSize: 12,
-    color: "#236b17",
+    color: "#06ab8b",
     fontWeight: 'bold', // Changed fontWeight to 'bold'
 
   },
@@ -214,58 +215,57 @@ const styles = StyleSheet.create({
     width: '90%',
     marginBottom: 20,
   },
+ 
   infoText: {
     fontSize: 16,
-    marginLeft:8
-
-  },
-  infoText: {
-    fontSize: 16,
-    marginLeft:8
+    marginLeft:8,
+    color: '#fff'
 
   },
   infoText3: {
     fontSize: 16,
-    marginRight:20
+    marginRight:20,
+    color: '#fff'
 
   },
   
   infoSubText: {
     fontSize: 12,
-    color: "#236b17",
+    color: "#fff",
 
 
   },
   infoSubText1: {
     fontSize: 12,
     marginLeft:35,
-    color: "#236b17",
+    color: "#fff",
 
   },
   infoSubText2: {
     fontSize: 12,
     marginLeft:8,
-    color: "#236b17",
+    color: "#fff",
 
     
   },
   infoSubText3: {
     fontSize: 15,
-    textAlign: 'right'
+    textAlign: 'right',
+    color: "#fff",
 
   },
   
   infoText2: {
     fontSize: 15,
     marginTop:20,
-    color: "#236b17",
+    color: "#06ab8b",
    fontWeight: 'bold',
    textAlign: 'right'
 
   },
   logoutButton: {
     marginBottom: 30,
-    backgroundColor: '#236b17',
+    backgroundColor: '#06ab8b',
     borderRadius: 15,
      flexDirection: 'row',
        alignItems: 'center',
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     position: 'absolute',
     marginTop: 18,
-    color: "#FF9800",
+    color: "#06ab8b",
     textAlign: 'right', // Align text content to the right
     right: 5,           // Position the element on the right side of the container    
 

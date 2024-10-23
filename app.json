@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Marwazi App",
-    "slug": "caawiye-marwazi-app",
-    "schema": "caawiye-marwazi-app",
+    "name": "Quran App",
+    "slug": "caawiye-Quran-app",
+    "schema": "caawiye-Quran-app",
     "version": "1.0.1",
    
     "orientation": "portrait",
@@ -22,7 +22,7 @@
         "backgroundColor": "#ffffff"
       },
       "versionCode": 2,
-      "package": "so.almarwazi.university"
+      "package": "so.alQuran.university"
     },
     "web": {
       "bundler": "metro",
