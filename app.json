@@ -2,14 +2,30 @@
   "expo": {
     "name": "Quran App",
     "slug": "caawiye-Quran-app",
-    "version": "1.0.0",
+    "version": "1.2.0",
+    "icon": "./assets/logo.png",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/logo.png",
+      "backgroundColor": "#ffffff"
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/logo.png"
+    },
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "web"  
+
     ],
     "android": {
       "package": "so.alQuran.university",
-      "versionCode": 1,
+      "versionCode": 3,
       "permissions": []
     },
     "extra": {
